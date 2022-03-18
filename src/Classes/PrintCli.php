@@ -1,12 +1,12 @@
 <?php
 namespace Tennis\Classes;
 
-use Tennis\Interfaces\ResultInterface;
+use Tennis\Interfaces\PrintInterface;
 
 /**
  * Class to print message in CLI
  */
-class PrintCli implements ResultInterface
+class PrintCli implements PrintInterface
 {
     protected $message;
     

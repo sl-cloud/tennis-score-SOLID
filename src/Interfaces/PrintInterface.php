@@ -5,7 +5,7 @@ namespace Tennis\Interfaces;
  * Output interface
  */
 
-interface ResultInterface
+interface PrintInterface
 {
     public function output();
 }

@@ -11,6 +11,6 @@ return array(
     'Tennis\\Classes\\PrintCli' => $baseDir . '/src/Classes/PrintCli.php',
     'Tennis\\Classes\\PrintHtml' => $baseDir . '/src/Classes/PrintHtml.php',
     'Tennis\\Classes\\Result' => $baseDir . '/src/Classes/Result.php',
-    'Tennis\\Interfaces\\ResultInterface' => $baseDir . '/src/Interfaces/ResultInterface.php',
+    'Tennis\\Interfaces\\PrintInterface' => $baseDir . '/src/Interfaces/PrintInterface.php',
     'Tennis\\Interfaces\\ScoreInterface' => $baseDir . '/src/Interfaces/ScoreInterface.php',
 );

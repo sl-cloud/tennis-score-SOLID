@@ -1,12 +1,12 @@
 <?php
 namespace Tennis\Classes;
 
-use Tennis\Interfaces\ResultInterface;
+use Tennis\Interfaces\PrintInterface;
 
 /**
  * Class to print message in HTML
  */
-class PrintHtml implements ResultInterface
+class PrintHtml implements PrintInterface
 {
 
     public function __construct(STRING $message)
