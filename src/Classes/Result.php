@@ -1,30 +1,31 @@
 <?php
 namespace Tennis\Classes;
 
-use Tennis\Interfaces\ResultInterface;
+use Tennis\Classes\PrintCli;
+use Tennis\Classes\PrintHtml;
 
 /**
  * Output Game Result
  */
-class Result implements ResultInterface
+class Result
 {
-    
+
     public $message;
-    
+
     public function __construct(STRING $message)
     {
         $this->message = $message;
     }
-    
+
     /**
      * Output the result
      */
     public function output()
     {
         if (php_sapi_name() == 'cli') {
-            echo $this->message . PHP_EOL;
+            (new PrintCli($this->message))->output();
         } else {
-            echo $this->message . "<Br/>\n";
+            (new PrintHtml($this->message))->output();
         }
     }
 }

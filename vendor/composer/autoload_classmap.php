@@ -8,6 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'Tennis\\Classes\\ComputeScore' => $baseDir . '/src/Classes/ComputeScore.php',
     'Tennis\\Classes\\Game' => $baseDir . '/src/Classes/Game.php',
+    'Tennis\\Classes\\PrintCli' => $baseDir . '/src/Classes/PrintCli.php',
+    'Tennis\\Classes\\PrintHtml' => $baseDir . '/src/Classes/PrintHtml.php',
     'Tennis\\Classes\\Result' => $baseDir . '/src/Classes/Result.php',
     'Tennis\\Interfaces\\ResultInterface' => $baseDir . '/src/Interfaces/ResultInterface.php',
     'Tennis\\Interfaces\\ScoreInterface' => $baseDir . '/src/Interfaces/ScoreInterface.php',

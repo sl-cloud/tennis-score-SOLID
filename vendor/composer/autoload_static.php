@@ -9,6 +9,8 @@ class ComposerStaticInitc1aa6cb534d38f460dade6b2203db385
     public static $classMap = array (
         'Tennis\\Classes\\ComputeScore' => __DIR__ . '/../..' . '/src/Classes/ComputeScore.php',
         'Tennis\\Classes\\Game' => __DIR__ . '/../..' . '/src/Classes/Game.php',
+        'Tennis\\Classes\\PrintCli' => __DIR__ . '/../..' . '/src/Classes/PrintCli.php',
+        'Tennis\\Classes\\PrintHtml' => __DIR__ . '/../..' . '/src/Classes/PrintHtml.php',
         'Tennis\\Classes\\Result' => __DIR__ . '/../..' . '/src/Classes/Result.php',
         'Tennis\\Interfaces\\ResultInterface' => __DIR__ . '/../..' . '/src/Interfaces/ResultInterface.php',
         'Tennis\\Interfaces\\ScoreInterface' => __DIR__ . '/../..' . '/src/Interfaces/ScoreInterface.php',
