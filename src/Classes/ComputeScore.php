@@ -3,6 +3,11 @@ namespace Tennis\Classes;
 
 use Tennis\Interfaces\ScoreInterface;
 
+/**
+ * Compute the score and return the state of the game
+ * When both players has won less than 4 points, it will use the lowWins method
+ * If one or both players win at least 4 points, it will use the highWins method
+ */
 class ComputeScore implements ScoreInterface
 {
     //Player names
@@ -76,6 +81,9 @@ class ComputeScore implements ScoreInterface
         
     }
     
+    /**
+     * Compute game state when both players have won less than 4 wins
+     */
     protected function lowWins() {
         $this->p1Score = $this->possibleScores[$this->p1Wins];
         $this->p2Score = $this->possibleScores[$this->p2Wins];
@@ -95,7 +103,7 @@ class ComputeScore implements ScoreInterface
     }
     
     /**
-     * Once at least one of the player reaches 4 wins, we can compute for DUECE, ADVANTAGE, or WIN
+     * Once at least one of the player won 4 wins, we can compute for DUECE, ADVANTAGE, or WIN
      * Note the score can be DUECE even if no player have 4 wins
      *
      * These are the possiblities:
