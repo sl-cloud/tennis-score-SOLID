@@ -3,6 +3,8 @@ namespace Tennis\Classes;
 
 /**
  * Abstract Class for Compute Score
+ * 
+ * switch -> lowWins/highWins
  */
 abstract class AbractComputeScore
 {

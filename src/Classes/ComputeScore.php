@@ -48,7 +48,7 @@ class ComputeScore extends AbractComputeScore implements ScoreInterface
      * $param ARRAY $wins is passed from __construct, no type hinting required
      * 
      */
-    protected function switch($wins)
+    protected function switch(ARRAY $wins)
     {
         foreach ($wins as $player) {
             // We will make sure the name of the player matches either player 1 or player 2 or we will throw an exception
