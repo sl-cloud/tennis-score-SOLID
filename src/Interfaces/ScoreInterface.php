@@ -3,11 +3,12 @@
 namespace Tennis\Interfaces;
 
 /**
- * ScoreType interface
+ * Score interface
  * 
  */
 
 interface ScoreInterface
-{    
+{   
+    //Get the state of the game
     public function getState();
 }

@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInitc1aa6cb534d38f460dade6b2203db385
 {
     public static $classMap = array (
+        'Tennis\\Classes\\AbractComputeScore' => __DIR__ . '/../..' . '/src/Classes/AbstractComputeScore.php',
         'Tennis\\Classes\\ComputeScore' => __DIR__ . '/../..' . '/src/Classes/ComputeScore.php',
         'Tennis\\Classes\\Game' => __DIR__ . '/../..' . '/src/Classes/Game.php',
         'Tennis\\Classes\\PrintCli' => __DIR__ . '/../..' . '/src/Classes/PrintCli.php',

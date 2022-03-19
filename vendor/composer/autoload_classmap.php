@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Tennis\\Classes\\AbractComputeScore' => $baseDir . '/src/Classes/AbstractComputeScore.php',
     'Tennis\\Classes\\ComputeScore' => $baseDir . '/src/Classes/ComputeScore.php',
     'Tennis\\Classes\\Game' => $baseDir . '/src/Classes/Game.php',
     'Tennis\\Classes\\PrintCli' => $baseDir . '/src/Classes/PrintCli.php',
