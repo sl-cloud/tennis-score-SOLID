@@ -4,7 +4,7 @@
  * This script is an extension of the tennis script using the SOLID Principle
  *
  * @author Steve Lee
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 require_once 'vendor/autoload.php';

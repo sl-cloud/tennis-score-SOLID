@@ -21,7 +21,7 @@ class Game {
         $this->nameP1 = $nameP1;
         $this->nameP2 = $nameP2;
         
-        (new Result("Tennis game status between {$this->nameP1} and {$this->nameP2}"))->output();
+        //(new Result("Tennis game status between {$this->nameP1} and {$this->nameP2}"))->output();
     }
     
     public function wins(array $wins = []) {

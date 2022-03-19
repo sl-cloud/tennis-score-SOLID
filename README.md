@@ -5,7 +5,9 @@
    
    Classes are autoloaded using Composer
    
-   Version 0.0.4
+   Version 0.0.5
+   
+   In version 0.0.5, added some unit tests
    
  */
 
