@@ -20,7 +20,7 @@ class Result
     /**
      * Output the result
      */
-    public function output()
+    public function output(): void
     {
         if (php_sapi_name() == 'cli') {
             (new PrintCli($this->message))->output();

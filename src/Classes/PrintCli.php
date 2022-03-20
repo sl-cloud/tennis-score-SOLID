@@ -8,13 +8,16 @@ use Tennis\Interfaces\PrintInterface;
  */
 class PrintCli implements PrintInterface
 {
+
     protected $message;
-    
-    public function __construct(STRING $message){
-        $this->message = $message;        
+
+    public function __construct(STRING $message)
+    {
+        $this->message = $message;
     }
-    
-    public function output(){
+
+    public function output(): void
+    {
         echo $this->message . PHP_EOL;
     }
 }

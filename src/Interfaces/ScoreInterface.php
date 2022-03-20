@@ -9,5 +9,5 @@ namespace Tennis\Interfaces;
 interface ScoreInterface
 {   
     //Get the state of the game
-    public function getState();
+    public function getState(): string;
 }

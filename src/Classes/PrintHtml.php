@@ -14,7 +14,7 @@ class PrintHtml implements PrintInterface
         $this->message = $message;
     }
 
-    public function output()
+    public function output(): void
     {
         echo $this->message . "<Br/>\n";
     }

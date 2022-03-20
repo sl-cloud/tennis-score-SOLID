@@ -10,16 +10,20 @@ use Tennis\Interfaces\ScoreInterface;
  */
 class ComputeScore extends AbractComputeScore implements ScoreInterface
 {
-    //Player names
+
+    // Player names
     protected $nameP1;
+
     protected $nameP2;
-    
+
     // default scores
     protected $p1Score = 0;
+
     protected $p2Score = 0;
 
     // number of wins
     protected $p1Wins = 0;
+
     protected $p2Wins = 0;
 
     // Possible scores not including DEUCE and ADVANTAGE
@@ -29,30 +33,28 @@ class ComputeScore extends AbractComputeScore implements ScoreInterface
         30,
         40
     ];
-    
-    //The state of the game
+
+    // The state of the game
     protected $state;
-    
 
     public function __construct(string $nameP1, string $nameP2, array $wins)
     {
         $this->nameP1 = $nameP1;
         $this->nameP2 = $nameP2;
-        
+
         $this->switch($wins);
     }
 
     /**
      * This method is used to decide if lowScore or highScore is used
-     * 
+     *
      * $param ARRAY $wins is passed from __construct, no type hinting required
-     * 
      */
-    protected function switch(ARRAY $wins)
+    protected function switch(ARRAY $wins): void
     {
         foreach ($wins as $player) {
             // We will make sure the name of the player matches either player 1 or player 2 or we will throw an exception
-            if ($player != $this->nameP1 AND $player != $this->nameP2) {
+            if ($player != $this->nameP1 and $player != $this->nameP2) {
                 $this->state = "{$player} is not in the match.  Please check your input array.";
                 (new Result(print_r($wins, 1)))->output();
                 break;
@@ -64,28 +66,29 @@ class ComputeScore extends AbractComputeScore implements ScoreInterface
                     $this->p2Wins ++;
                 }
             }
-            
-            if ($this->p1Wins < 4 AND $this->p2Wins < 4) {
+
+            if ($this->p1Wins < 4 and $this->p2Wins < 4) {
                 // If both players have less than 4 wins
-                if($this->lowWins()){
+                if ($this->lowWins()) {
                     break;
                 }
             } else {
                 // If at least one player reaches 4 wins
-                if($this->highWins()){
+                if ($this->highWins()) {
                     break;
                 }
             }
         }
     }
-    
+
     /**
      * Compute game state when both players have won less than 4 wins
      */
-    protected function lowWins() {
+    protected function lowWins(): bool
+    {
         $this->p1Score = $this->possibleScores[$this->p1Wins];
         $this->p2Score = $this->possibleScores[$this->p2Wins];
-        
+
         // Both players have the same number of wins
         if ($this->p1Wins == $this->p2Wins) {
             // If number of wins reaches 3 and the scores are the same, than it is DEUCE.
@@ -98,8 +101,9 @@ class ComputeScore extends AbractComputeScore implements ScoreInterface
         } else {
             $this->state = "{$this->nameP1} {$this->p1Score} - {$this->nameP2} {$this->p2Score}";
         }
+        return false;
     }
-    
+
     /**
      * Once at least one of the player won 4 wins, we can compute for DUECE, ADVANTAGE, or WIN
      * Note the score can be DUECE even if no player have 4 wins
@@ -109,7 +113,8 @@ class ComputeScore extends AbractComputeScore implements ScoreInterface
      * 2) If the difference is 2, the player wins the game
      * 3) If the wins are the same, then it is DEUCE
      */
-    protected function highWins() {
+    protected function highWins(): bool
+    {
         // We will find the leading player
         if ($this->p1Wins != $this->p2Wins) {
             if ($this->p1Wins > $this->p2Wins) {
@@ -119,7 +124,7 @@ class ComputeScore extends AbractComputeScore implements ScoreInterface
                 $winner = $this->nameP2;
                 $diff = $this->p2Wins - $this->p1Wins;
             }
-            
+
             if ($diff < 2) {
                 $this->state = "{$winner} Advantage";
             } else {
@@ -131,13 +136,13 @@ class ComputeScore extends AbractComputeScore implements ScoreInterface
             // Deuce
             $this->state = "DEUCE";
         }
+        return false;
     }
-    
-    
+
     /**
      * Return the game state
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->state;
     }

@@ -5,7 +5,7 @@ require_once 'vendor/autoload.php';
 use PHPUnit\Framework\TestCase;
 use Tennis\Classes\Game;
 
-class ComputeScoreTest extends TestCase
+final class ComputeScoreTest extends TestCase
 {
     private $game;
     function setUp(): void

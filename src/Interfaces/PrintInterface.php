@@ -7,5 +7,5 @@ namespace Tennis\Interfaces;
 
 interface PrintInterface
 {
-    public function output();
+    public function output(): void;
 }
