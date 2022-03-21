@@ -34,24 +34,18 @@ class Game
 
     public function wins(array $wins = []): void
     {
-        if (empty($wins)) {
-            // The default score is 0 - 0
-            $this->gameState = "{$this->nameP1} 0 - {$this->nameP2} 0";
+        /**
+         * Check that computeScore is a sub class of AbractComputeScore
+         * Which also check that it implements ScoreInterface
+         */
+        $computeScore = new ComputeScore($this->nameP1, $this->nameP2, $wins);
+        if (is_a($computeScore, 'Tennis\Classes\AbractComputeScore')) {
+            $this->gameState = $computeScore->getState();
         } else {
-            $computeScore = new ComputeScore($this->nameP1, $this->nameP2, $wins);
-
-            /**
-             * Check that computeScore is a sub class of AbractComputeScore
-             * Which also check that it implements ScoreInterface
-             */
-            if(is_a($computeScore, 'Tennis\Classes\AbractComputeScore')) {
-                $this->gameState = $computeScore->getState();
-            } else {
-                throw new Exception("Class is not an instance of AbractComputeScore AND ScoreInterface");
-                exit;
-            }
+            throw new Exception("Class is not an instance of AbractComputeScore AND ScoreInterface");
+            exit();
         }
-        
+
         (new Result($this->gameState))->output();
     }
 }

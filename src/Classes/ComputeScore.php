@@ -49,33 +49,38 @@ class ComputeScore extends AbractComputeScore
      */
     protected function switch(ARRAY $wins): void
     {
-        foreach ($wins as $player) {
-            // We will make sure the name of the player matches either player 1 or player 2 or we will throw an exception
-            if ($player != $this->nameP1 and $player != $this->nameP2) {
-                $this->state = "{$player} is not in the match.  Please check your input array.";
-                (new Result(print_r($wins, 1)))->output();
-                break;
-            } else {
-                // Incrementing number of wins for each player
-                if ($player == $this->nameP1) {
-                    $this->p1Wins ++;
+        if (empty($wins)) {
+            $this->state = "{$this->nameP1} 0 - {$this->nameP2} 0";
+        } else {
+            foreach ($wins as $player) {
+                // We will make sure the name of the player matches either player 1 or player 2 or we will throw an exception
+                if ($player != $this->nameP1 and $player != $this->nameP2) {
+                    $this->state = "{$player} is not in the match.  Please check your input array.";
+                    (new Result(print_r($wins, 1)))->output();
+                    break;
                 } else {
-                    $this->p2Wins ++;
+                    // Incrementing number of wins for each player
+                    if ($player == $this->nameP1) {
+                        $this->p1Wins ++;
+                    } else {
+                        $this->p2Wins ++;
+                    }
                 }
-            }
-
-            if ($this->p1Wins < 4 and $this->p2Wins < 4) {
-                // If both players have less than 4 wins
-                if ($this->lowWins()) {
-                    break;
-                }
-            } else {
-                // If at least one player reaches 4 wins
-                if ($this->highWins()) {
-                    break;
+                
+                if ($this->p1Wins < 4 and $this->p2Wins < 4) {
+                    // If both players have less than 4 wins
+                    if ($this->lowWins()) {
+                        break;
+                    }
+                } else {
+                    // If at least one player reaches 4 wins
+                    if ($this->highWins()) {
+                        break;
+                    }
                 }
             }
         }
+        
     }
 
     /**
