@@ -38,9 +38,9 @@ class Game
          * Check that computeScore is a sub class of AbractComputeScore
          * Which also check that it implements ScoreInterface
          */
-        $computeScore = new ComputeScore($this->nameP1, $this->nameP2, $wins);
+        $computeScore = new ComputeScore($this->nameP1, $this->nameP2);
         if (is_a($computeScore, 'Tennis\Classes\AbractComputeScore')) {
-            $this->gameState = $computeScore->getState();
+            $this->gameState = $computeScore->setWins($wins)->getState();
         } else {
             throw new Exception("Class is not an instance of AbractComputeScore AND ScoreInterface");
             exit();

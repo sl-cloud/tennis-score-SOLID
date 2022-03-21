@@ -32,14 +32,12 @@ class ComputeScore extends AbractComputeScore
     ];
 
     // The state of the game
-    protected $state;
+    protected $gameState;
 
-    public function __construct(string $nameP1, string $nameP2, array $wins)
+    public function __construct(string $nameP1, string $nameP2)
     {
         $this->nameP1 = $nameP1;
         $this->nameP2 = $nameP2;
-
-        $this->switch($wins);
     }
 
     /**
@@ -47,16 +45,16 @@ class ComputeScore extends AbractComputeScore
      *
      * $param ARRAY $wins is passed from __construct, no type hinting required
      */
-    protected function switch(ARRAY $wins): void
+    public function setWins(ARRAY $wins): self
     {
         if (empty($wins)) {
-            $this->state = "{$this->nameP1} 0 - {$this->nameP2} 0";
+            $this->gameState = "{$this->nameP1} 0 - {$this->nameP2} 0";
         } else {
             foreach ($wins as $player) {
                 // We will make sure the name of the player matches either player 1 or player 2 or we will throw an exception
                 if ($player != $this->nameP1 and $player != $this->nameP2) {
-                    $this->state = "{$player} is not in the match.  Please check your input array.";
-                    (new Result(print_r($wins, 1)))->output();
+                    $this->gameState = "{$player} is not in the match.  Please check your input array.";
+                    //(new Result(print_r($wins, 1)))->output();
                     break;
                 } else {
                     // Incrementing number of wins for each player
@@ -80,7 +78,7 @@ class ComputeScore extends AbractComputeScore
                 }
             }
         }
-        
+        return $this;
     }
 
     /**
@@ -96,12 +94,12 @@ class ComputeScore extends AbractComputeScore
             // If number of wins reaches 3 and the scores are the same, than it is DEUCE.
             // This can happen when the score is 40 - 40
             if ($this->p1Wins == 3) {
-                $this->state = "DEUCE";
+                $this->gameState = "DEUCE";
             } else {
-                $this->state = "{$this->p1Score}a";
+                $this->gameState = "{$this->p1Score}a";
             }
         } else {
-            $this->state = "{$this->nameP1} {$this->p1Score} - {$this->nameP2} {$this->p2Score}";
+            $this->gameState = "{$this->nameP1} {$this->p1Score} - {$this->nameP2} {$this->p2Score}";
         }
         return false;
     }
@@ -128,15 +126,15 @@ class ComputeScore extends AbractComputeScore
             }
 
             if ($diff < 2) {
-                $this->state = "{$winner} Advantage";
+                $this->gameState = "{$winner} Advantage";
             } else {
                 // Game won, return true;
-                $this->state = "{$winner} WINS";
+                $this->gameState = "{$winner} WINS";
                 return true;
             }
         } else {
             // Deuce
-            $this->state = "DEUCE";
+            $this->gameState = "DEUCE";
         }
         return false;
     }
@@ -146,6 +144,6 @@ class ComputeScore extends AbractComputeScore
      */
     public function getState(): string
     {
-        return $this->state;
+        return $this->gameState;
     }
 }
