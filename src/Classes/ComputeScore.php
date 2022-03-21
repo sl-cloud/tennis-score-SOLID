@@ -8,22 +8,19 @@ use Tennis\Interfaces\ScoreInterface;
  * When both players has won less than 4 points, it will use the lowWins method
  * If one or both players win at least 4 points, it will use the highWins method
  */
-class ComputeScore extends AbractComputeScore implements ScoreInterface
+class ComputeScore extends AbractComputeScore
 {
 
     // Player names
     protected $nameP1;
-
     protected $nameP2;
 
     // default scores
     protected $p1Score = 0;
-
     protected $p2Score = 0;
 
     // number of wins
     protected $p1Wins = 0;
-
     protected $p2Wins = 0;
 
     // Possible scores not including DEUCE and ADVANTAGE

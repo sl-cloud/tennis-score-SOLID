@@ -1,12 +1,14 @@
 <?php
 namespace Tennis\Classes;
 
+use Tennis\Interfaces\ScoreInterface;
+
 /**
  * Abstract Class for Compute Score
  *
  * switch -> lowWins/highWins
  */
-abstract class AbractComputeScore
+abstract class AbractComputeScore implements ScoreInterface
 {
 
     // This method will decide if we use the lowWins or highWins method

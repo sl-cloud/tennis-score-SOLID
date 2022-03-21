@@ -1,6 +1,8 @@
 <?php
 namespace Tennis\Classes;
 
+use Exception;
+
 /**
  * This is the main Game class
  */
@@ -36,9 +38,20 @@ class Game
             // The default score is 0 - 0
             $this->gameState = "{$this->nameP1} 0 - {$this->nameP2} 0";
         } else {
-            $this->gameState = (new ComputeScore($this->nameP1, $this->nameP2, $wins))->getState();
-        }
+            $computeScore = new ComputeScore($this->nameP1, $this->nameP2, $wins);
 
+            /**
+             * Check that computeScore is a sub class of AbractComputeScore
+             * Which also check that it implements ScoreInterface
+             */
+            if(is_a($computeScore, 'Tennis\Classes\AbractComputeScore')) {
+                $this->gameState = $computeScore->getState();
+            } else {
+                throw new Exception("Class is not an instance of AbractComputeScore AND ScoreInterface");
+                exit;
+            }
+        }
+        
         (new Result($this->gameState))->output();
     }
 }
